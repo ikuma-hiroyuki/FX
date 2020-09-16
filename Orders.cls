@@ -7,11 +7,11 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
-e '@Folder("Orders")
+'@Folder("CreateTradeDetail")
 Option Explicit
 
-Private m_orderNum As String
-Private m_wsMasta As Worksheet
+Private m_OrderNum As String
+Private m_WsMasta As Worksheet
 Private m_entryURL As String
 Private m_exitURL As String
 Private m_2HourLaterURL As String
@@ -20,10 +20,10 @@ Private m_currentRow As Long
 
 Public Sub GetOrder()
     If ActiveSheet.Name = "マスターデータ" Then
-        Set m_wsMasta = Worksheets("マスターデータ")
-        With m_wsMasta
+        Set m_WsMasta = Worksheets("マスターデータ")
+        With m_WsMasta
             If IsNumeric(.Cells(m_currentRow, "A")) Then
-                m_orderNum = .Cells(m_currentRow, "A")
+                m_OrderNum = .Cells(m_currentRow, "A")
                 m_entryURL = .Cells(m_currentRow, "N")
                 m_exitURL = .Cells(m_currentRow, "V")
                 m_2HourLaterURL = .Cells(m_currentRow, "W")
@@ -52,5 +52,5 @@ Public Property Get TwoHourLaterURL() As String
 End Property
 
 Public Property Get OrderNum() As String
-    OrderNum = m_orderNum
+    OrderNum = m_OrderNum
 End Property

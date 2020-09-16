@@ -1,5 +1,5 @@
-Attribute VB_Name = "main"
-'@Folder("Main")
+Attribute VB_Name = "CreateTradeDetail"
+'@Folder("CreateTradeDetail")
 Option Explicit
 
 Public Sub ŒÂ•Êæˆøì¬()

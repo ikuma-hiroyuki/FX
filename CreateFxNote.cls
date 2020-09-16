@@ -7,7 +7,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
-    '@Folder("GetWebImage")
+'@Folder("CreateTradeDetail")
 Option Explicit
 
 #If Win64 Then
@@ -32,7 +32,7 @@ Private m_imgSavePath As String
 Private m_implantAddress As String
 
 Private m_filename As String
-Private m_orderNum As String
+Private m_OrderNum As String
 
 Private Sub Class_Initialize()
     Set m_wsIndividual = Worksheets("個別取引")
@@ -47,7 +47,7 @@ End Sub
 Private Sub ExeImplantation(ByVal result As Long, ByVal imagePath As String, implantRange As Range)
     If result = 0 Then
         With m_wsIndividual.Pictures.Insert(imagePath)
-            m_wsIndividual.Range("J1") = m_orderNum
+            m_wsIndividual.Range("J1") = m_OrderNum
             .Top = implantRange.Top
             .Left = implantRange.Left
             .Width = implantRange.MergeArea.Width - 5
@@ -63,7 +63,7 @@ Public Sub GetImage(ByVal OrderNum As String, _
                     ByVal fileName As String, _
                     ByVal implantAddress As String)
                     
-    m_orderNum = OrderNum
+    m_OrderNum = OrderNum
     m_filename = fileName
     Application.StatusBar = m_filename & "画像を取得中"
     m_implantAddress = implantAddress
@@ -72,7 +72,7 @@ Public Sub GetImage(ByVal OrderNum As String, _
 End Sub
 
 Private Sub ImageDl(ByVal fileType As String, ByRef result As Long, ByVal imageUrl As String, ByRef saveAs As String)
-    saveAs = ThisWorkbook.Path & "\" & m_orderNum & "_" & fileType & ".png"
+    saveAs = ThisWorkbook.Path & "\" & m_OrderNum & "_" & fileType & ".png"
     result = URLDownloadToFile(0, imageUrl, saveAs, 0, 0) 'ダウンロードに成功すると0が返る。
 End Sub
 
